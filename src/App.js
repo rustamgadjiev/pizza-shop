@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Categories } from './components/Categories';
 import { Sort } from './components/Sort';
 import { Pizza } from './components/Pizza';
+import pizzas from './utils/Pizza-List.json';
 
 export const App = () => {
   return (
@@ -16,12 +17,11 @@ export const App = () => {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            <Pizza title='Мексиканская' price={395} />
-            <Pizza title='Чизбургер-пицца' price={499} />
-            <Pizza title='Чизбургер-пицца' price={599} />
-            <Pizza title='Чизбургер-пицца' price={295} />
-            <Pizza title='Чизбургер-пицца' price={199} />
-            <Pizza title='Чизбургер-пицца' price={249} />
+            {
+              pizzas.map(pizza => {
+                return <Pizza {...pizza} />
+              })
+            }
           </div>
         </div>
       </div>
