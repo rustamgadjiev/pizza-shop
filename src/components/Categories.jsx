@@ -1,17 +1,18 @@
 import { useState } from "react";
-import { CATEGORIES_LIST } from './../utils/Constants';
+import { categoriesList } from './../utils/app-data';
 
 export const Categories = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState(0);
 
   return (
     <div className="categories">
       <ul>
-        {CATEGORIES_LIST.map((category, pos) => {
+        {categoriesList.map((category, pos) => {
           return (
             <li
-              className={activeIndex === pos ? "active" : ""}
-              onClick={() => setActiveIndex(pos)}
+              key={category}
+              className={selectedCategory === pos ? "active" : ""}
+              onClick={() => setSelectedCategory(pos)}
             >
               {category}
             </li>

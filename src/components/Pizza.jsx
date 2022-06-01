@@ -1,14 +1,10 @@
 import { useState } from "react";
-import { PIZZA_TYPE } from "../utils/Constants";
+import { pizzaType } from "../utils/app-data";
 
 export const Pizza = ({ title, price, imageUrl, sizes, types }) => {
   const [pizzaCount, setPizzaCount] = useState(0);
-  const [activeType, setActiveType] = useState(0);
-  const [activeSize, setActiveSize] = useState(0);
-
-  const handleAddClick = () => {
-    setPizzaCount((c) => c + 1);
-  };
+  const [selectedType, setSelectedType] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(0);
 
   return (
     <div className="pizza-block">
@@ -18,18 +14,20 @@ export const Pizza = ({ title, price, imageUrl, sizes, types }) => {
         <ul>
           {types.map((type, pos) => (
             <li
-              onClick={() => setActiveType(pos)}
-              className={activeType === pos ? "active" : ""}
+              key={type}
+              onClick={() => setSelectedType(pos)}
+              className={selectedType === pos ? "active" : ""}
             >
-              {PIZZA_TYPE[type]}
+              {pizzaType[type]}
             </li>
           ))}
         </ul>
         <ul>
           {sizes.map((size, pos) => (
             <li
-              onClick={() => setActiveSize(pos)}
-              className={activeSize === pos ? "active" : ""}
+              key={size}
+              onClick={() => setSelectedSize(pos)}
+              className={selectedSize === pos ? "active" : ""}
             >
               {size} см.
             </li>
@@ -39,7 +37,7 @@ export const Pizza = ({ title, price, imageUrl, sizes, types }) => {
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} ₽</div>
         <button
-          onClick={handleAddClick}
+          onClick={() => setPizzaCount(c => c + 1)}
           className="button button--outline button--add"
         >
           <svg
