@@ -1,16 +1,14 @@
 @import '../variables';
 
 .pizza-block {
-  width: 280px;
+  max-width: 280px;
+  width: 100%;
   text-align: center;
   margin-bottom: 65px;
 
-  &:not(:nth-of-type(4n)) {
-    margin-right: 35px;
-  }
-
   &__image {
     width: 260px;
+    object-position: 5px 0;
   }
 
   &__title {
@@ -65,4 +63,8 @@
     line-height: 27px;
     letter-spacing: 0.015em;
   }
+
+  // @media (max-width: 350px) {
+  //   width: 260px;
+  // }
 }

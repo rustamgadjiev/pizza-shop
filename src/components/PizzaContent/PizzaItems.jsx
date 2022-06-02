@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
-import { PIZZA_LIST_URL } from "../utils/constants";
+import { PIZZA_LIST_URL } from "../../utils/constants";
 import { Pizza } from "./Pizza";
+import { Preloader } from "../Helpers/Preloader";
 
-export const PizzaContent = () => {
+export const PizzaItems = () => {
   const [pizzaList, setPizzaList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     try {
       fetch(PIZZA_LIST_URL)
         .then((resp) => resp.json())
-        .then((pizzaList) => setPizzaList(pizzaList))
+        .then((pizzaList) => {
+          setPizzaList(pizzaList);
+          setIsLoading(false);
+        })
         .catch(console.log);
     } catch (error) {
       console.log(error);
@@ -17,13 +22,12 @@ export const PizzaContent = () => {
   }, []);
 
   return (
-    <>
-      <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">
+    <div className="content__items">
+      <Preloader isLoading={isLoading}>
         {pizzaList.map((pizza) => {
           return <Pizza key={pizza.id} {...pizza} />;
         })}
-      </div>
-    </>
+      </Preloader>
+    </div>
   );
 };

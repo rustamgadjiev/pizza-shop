@@ -1,4 +1,3 @@
-// @import './fonts';
 @import './variables';
 @import './libs/normalize';
 
@@ -15,6 +14,10 @@ body {
   margin: 50px auto;
   border-radius: 10px;
   max-width: 1400px;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 }
 
 .content {
@@ -25,15 +28,40 @@ body {
   }
 
   &__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    column-gap: 20px;
+
+    @media (max-width: 1400px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 1090px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 725px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   &__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 1300px) {
+      flex-direction: column-reverse;
+
+      .categories{
+        margin-top: 20px;
+
+        ul{
+          flex-wrap: wrap;
+          justify-content: center;
+          row-gap: 10px;
+        }
+      }
+    }
   }
 }
 
@@ -51,6 +79,7 @@ body {
 }
 
 .cart {
+  padding: 50px 0;
   &__top {
     display: flex;
     justify-content: space-between;
@@ -275,7 +304,7 @@ body {
 
   &--empty {
     margin: 0 auto;
-    width: 560px;
+    max-width: 560px;
     text-align: center;
 
     h2 {
@@ -290,14 +319,15 @@ body {
       color: #777777;
     }
 
-    icon {
+    span {
       position: relative;
       top: 2px;
     }
 
     img {
       display: block;
-      width: 300px;
+      max-width: 300px;
+      width: 100%;
       margin: 45px auto 60px;
     }
 
