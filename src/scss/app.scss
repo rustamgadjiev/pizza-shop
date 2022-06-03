@@ -16,7 +16,7 @@ body {
   max-width: 1400px;
 
   @media (max-width: 768px) {
-    width: 90%;
+    width: calc(100vw - 30px);
   }
 }
 
@@ -24,7 +24,9 @@ body {
   padding: 40px 0;
 
   &__title {
-    margin: 35px 0;
+    margin: 50px 0;
+    font-weight: 700;
+    font-size: 40px;
   }
 
   &__items {
@@ -36,9 +38,11 @@ body {
     @media (max-width: 1400px) {
       grid-template-columns: repeat(3, 1fr);
     }
+
     @media (max-width: 1090px) {
       grid-template-columns: repeat(2, 1fr);
     }
+
     @media (max-width: 725px) {
       grid-template-columns: repeat(1, 1fr);
     }
@@ -52,13 +56,23 @@ body {
     @media (max-width: 1300px) {
       flex-direction: column-reverse;
 
-      .categories{
+      .categories {
         margin-top: 20px;
 
-        ul{
-          flex-wrap: wrap;
+        ul {
           justify-content: center;
           row-gap: 10px;
+        }
+      }
+    }
+
+    @media (max-width: 1010px) {
+      .categories {
+        ul {
+          flex-wrap: wrap;
+          li{
+            width: 200px;
+          }
         }
       }
     }
@@ -72,6 +86,7 @@ body {
   &--cart {
     max-width: 820px;
     margin: 90px auto;
+
     .content__title {
       margin: 0;
     }
@@ -80,6 +95,7 @@ body {
 
 .cart {
   padding: 50px 0;
+
   &__top {
     display: flex;
     justify-content: space-between;
@@ -97,6 +113,7 @@ body {
       width: 30px;
       height: 30px;
       margin-right: 10px;
+
       path {
         stroke: $black;
         stroke-width: 1.9;
@@ -129,6 +146,7 @@ body {
           stroke: darken($color: #b6b6b6, $amount: 50);
         }
       }
+
       span {
         color: darken($color: #b6b6b6, $amount: 50);
       }
@@ -229,6 +247,7 @@ body {
           height: 11.5px;
           position: relative;
         }
+
         &:hover,
         &:active {
           border-color: darken($color: $gray-line, $amount: 80);
@@ -286,6 +305,7 @@ body {
 
         svg {
           margin-right: 12px;
+
           path {
             fill: transparent;
             stroke-width: 2;

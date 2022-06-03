@@ -12,14 +12,21 @@
 
   &__logo {
     display: flex;
+    align-items: center;
 
     img {
       margin-right: 15px;
     }
 
     @media (max-width: 610px) {
-      div{
-        display: none;
+      div p{
+          display: none;
+      }
+    }
+
+    @media (max-width: 425px) {
+      div h1{
+        font-size: 18px;
       }
     }
 
@@ -33,6 +40,18 @@
 
     p {
       color: #7b7b7b;
+    }
+  }
+
+  &__cart{
+    @media (max-width: 610px) {
+      .button{
+        justify-content: center;
+        span:first-child,
+        &__delimiter{
+          display: none;
+        }
+      }
     }
   }
 }

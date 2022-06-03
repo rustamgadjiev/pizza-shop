@@ -12,6 +12,10 @@
 
     b {
       margin-right: 8px;
+
+      @media (max-width: 425px) {
+        display: none;
+      }
     }
 
     span {
@@ -32,6 +36,11 @@
     overflow: hidden;
     padding: 10px 0;
     width: 160px;
+
+    @media (max-width: 425px) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
     ul {
       overflow: hidden;

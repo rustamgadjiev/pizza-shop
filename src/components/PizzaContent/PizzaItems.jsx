@@ -19,6 +19,7 @@ export const PizzaItems = () => {
     } catch (error) {
       console.log(error);
     }
+    window.scrollTo(0, 0);
   }, []);
 
   return (
