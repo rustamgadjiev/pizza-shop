@@ -5,6 +5,21 @@
 
 body {
   background-color: $background;
+
+  &::-webkit-scrollbar {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $orange;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: darken($orange, 10%);
+    }
+  }
 }
 
 .App {
@@ -53,7 +68,7 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    @media (max-width: 1300px) {
+    @media (max-width: 1340px) {
       flex-direction: column-reverse;
 
       .categories {
@@ -70,7 +85,8 @@ body {
       .categories {
         ul {
           flex-wrap: wrap;
-          li{
+
+          li {
             width: 200px;
           }
         }

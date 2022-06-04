@@ -2,9 +2,8 @@ import { useState } from "react";
 import { sortList } from "../utils/app-data";
 import { ReactComponent as ArrowIcon } from '../assets/img/icon/arrow-top.svg';
 
-export const Sort = () => {
+export const Sort = ({ selectedSort, setSelectedSort }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedSort, setSelectedSort] = useState(0);
 
   const handleSortClick = (index) => {
     setSelectedSort(index);
@@ -15,21 +14,21 @@ export const Sort = () => {
     <div className="sort">
       <div className="sort__label">
         <ArrowIcon />
-        <b>Сортировка по:</b>
+        <b>Сортировка:</b>
         <span onClick={() => setIsVisible(!isVisible)}>
-          {sortList[selectedSort]}
+          {sortList[selectedSort].name}
         </span>
       </div>
       {isVisible && (
         <div className="sort__popup">
           <ul>
-            {sortList.map((value, pos) => (
+            {sortList.map((item, pos) => (
               <li
-                key={value}
+                key={item.name}
                 onClick={() => handleSortClick(pos)}
                 className={selectedSort === pos ? "active" : ""}
               >
-                {value}
+                {item.name}
               </li>
             ))}
           </ul>

@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { categoriesList } from "./../utils/app-data";
 
-export const Categories = () => {
-  const [selectedCategory, setSelectedCategory] = useState(0);
-
+export const Categories = ({ selectedCategory, setSelectedCategory }) => {
   return (
     <div className="categories">
       <ul>

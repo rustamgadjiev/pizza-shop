@@ -1,1 +1,1 @@
-export const PIZZA_LIST_URL = 'https://6238ce080a54d2ceab7a54d2.mockapi.io/pizza-list';
+export const PIZZA_LIST_URL = 'https://6238ce080a54d2ceab7a54d2.mockapi.io/pizza-list/';
