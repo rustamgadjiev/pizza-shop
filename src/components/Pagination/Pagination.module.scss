@@ -1,0 +1,30 @@
+@import '../../scss/variables';
+
+.paginate {
+    display: flex;
+    gap: 5px;
+    user-select: none;
+
+    :global {
+        .selected {
+            a {
+                background-color: $orange;
+                color: #fff;
+            }
+        }
+    }
+
+    a {
+        padding: 10px 15px;
+        border: 1px solid $orange;
+        color: $orange;
+        border-radius: 50%;
+        cursor: pointer;
+        transition-duration: .3s;
+
+        &:hover {
+            background-color: $orange;
+            color: #fff;
+        }
+    }
+}

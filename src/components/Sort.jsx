@@ -14,7 +14,7 @@ export const Sort = ({ selectedSort, setSelectedSort }) => {
     <div className="sort">
       <div className="sort__label">
         <ArrowIcon />
-        <b>Сортировка:</b>
+        <b>Сортировка по:</b>
         <span onClick={() => setIsVisible(!isVisible)}>
           {sortList[selectedSort].name}
         </span>

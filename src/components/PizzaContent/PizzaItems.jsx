@@ -4,19 +4,25 @@ import { Pizza } from "./Pizza";
 import { Preloader } from "../Helpers/Preloader";
 import { sortList } from "../../utils/app-data";
 
-export const PizzaItems = ({ selectedSort, selectedCategory }) => {
+export const PizzaItems = ({
+  selectedSort,
+  selectedCategory,
+  searchValue,
+  currentPage,
+}) => {
   const [pizzaList, setPizzaList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const sortBy = sortList[selectedSort].sortProperty.replace("-", "");
   const order = sortList[selectedSort].sortProperty[0] === "-" ? "asc" : "desc";
-  const checkCategory = selectedCategory ? selectedCategory : "";
+  const checkCategory = selectedCategory ? `category=${selectedCategory}` : "";
+  const search = searchValue ? `search=${searchValue}` : "";
 
   useEffect(() => {
     setIsLoading(true);
     try {
       fetch(
-        `${PIZZA_LIST_URL}?sortBy=${sortBy}&order=${order}&category=${checkCategory}`
+        `${PIZZA_LIST_URL}?sortBy=${sortBy}&order=${order}&${checkCategory}&${search}&page=${currentPage}&limit=4`
       )
         .then((resp) => resp.json())
         .then((pizzaList) => {
@@ -28,7 +34,7 @@ export const PizzaItems = ({ selectedSort, selectedCategory }) => {
       console.log(error);
     }
     window.scrollTo(0, 0);
-  }, [sortBy, order, checkCategory]);
+  }, [sortBy, order, checkCategory, search, currentPage]);
 
   return (
     <div className="content__items">
